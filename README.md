@@ -53,16 +53,6 @@ Este proyecto **NO**:
 * JavaScript
 * GitHub Pages
 
-## 📁 Estructura del proyecto
-
-/project
-┣ index.html
-┣ /css
-┃ ┗ styles.css
-┣ /js
-┃ ┣ main.js
-┃ ┣ card.controller.js
-┃ ┗ templates.js
 
 ## 🚀 Cómo usar
 
@@ -80,11 +70,6 @@ cd carpeta
 
 Abrí `index.html` en tu navegador.
 
-## 🌗 Modo oscuro
-
-El usuario puede alternar entre modo claro y oscuro.
-La preferencia se guarda en `localStorage`.
-
 
 
 ## 💡 Motivación
@@ -96,7 +81,6 @@ Este proyecto nace de una necesidad real observada en comunidades de artistas, d
 Las contribuciones son bienvenidas.
 Podés abrir un issue o enviar un pull request.
 
-## 📄 Licencia
 
 MIT
 
