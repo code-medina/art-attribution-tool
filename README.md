@@ -1,4 +1,4 @@
-# 🎨 Art ATTRIBUTTON TOOL
+# 🎨 Art ATTRIBUTION TOOL
 
 Una herramienta simple para generar **templates de atribución artística** listos para copiar y usar.
 
