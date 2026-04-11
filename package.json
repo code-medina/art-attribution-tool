@@ -1,18 +1,22 @@
 {
-  "name": "art-attribution-tool",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "type": "module",
-  "scripts": {
-    "test": "vitest",
-    "test:v":"pnpm vitest --reporter verbose"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "packageManager": "pnpm@10.33.0",
-  "devDependencies": {
-    "vitest": "^4.1.4"
-  }
+	"name": "art-attribution-tool",
+	"version": "1.0.0",
+	"description": "",
+	"main": "index.js",
+	"type": "module",
+	"scripts": {
+		"test": "vitest",
+		"test:v": "pnpm vitest --reporter verbose",
+		"lint": "biome check .",
+		"format": "biome format .",
+		"lint:fix": "biome check --apply ."
+	},
+	"keywords": [],
+	"author": "",
+	"license": "ISC",
+	"packageManager": "pnpm@10.33.0",
+	"devDependencies": {
+		"@biomejs/biome": "^2.4.11",
+		"vitest": "^4.1.4"
+	}
 }
