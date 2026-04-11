@@ -9,7 +9,7 @@
 		"test:v": "pnpm vitest --reporter verbose",
 		"lint": "biome check .",
 		"format": "biome format .",
-		"lint:fix": "biome check --apply ."
+		"lint:fix": "biome check --write ."
 	},
 	"keywords": [],
 	"author": "",
