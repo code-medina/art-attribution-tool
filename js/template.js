@@ -1,83 +1,111 @@
 import { formatArtist } from "./formatting";
 
-const generateReinterpretation = ({ artist, work } = {}) => {
-	console.log("entro1", typeof artist);
-
-	if (typeof artist !== "string" || artist.trim().length === 0) return "";
-
-	console.log("entro2");
-	let message = `Reinterpretacion de `;
-	message +=
-		typeof work === "string" && work.trim().length > 0
-			? `obra "${work}" de ${artist}`
-			: `obra de ${artist}`;
-
-	console.log("message", message);
-	return message;
+/**
+ * Construye el texto base de la obra
+ */
+const buildWorkText = ({ artist, work, year }={}) => {
+	return work ? `la obra "${work}"${year}, de ${artist}` : `obra de ${artist}`;
 };
 
+/**
+ * Construye el mensaje final con prefijo + ubicación opcional
+ */
+const buildMessage = (prefix, data) => {
+	const base = buildWorkText(data);
 
-
-const generateTribute = ({ artist, work } = {}) => {
-	console.log("entro1", typeof artist);
-
-	if (typeof artist !== "string" || artist.trim().length === 0) return "";
-
-	console.log("entro2");
-	let message = `Homenaje a `;
-	message +=
-		typeof work === "string" && work.trim().length > 0
-			? `obra "${work}" de ${artist}`
-			: `${artist}`;
-
-	console.log("message", message);
-	return message;
+	return data.ubication
+		? `${prefix} ${base}. ${data.ubication}`
+		: `${prefix} ${base}.`;
 };
 
-const generateReference = ({ artist, work } = {}) => {
-	console.log("entro1", typeof artist);
+/**
+ * Generadores por tipo
+ */
+const generateReinterpretation = (data) =>
+	buildMessage("Reinterpretación de", data);
 
-	if (typeof artist !== "string" || artist.trim().length === 0) return "";
+const generateTribute = (data) =>
+	data.work
+		? buildMessage("Homenaje a", data)
+		: data.ubication
+			? `Homenaje a ${data.artist}. ${data.ubication}`
+			: `Homenaje a ${data.artist}.`;
 
-	console.log("entro2");
-	let message = `Referencia en `;
-	message +=
-		typeof work === "string" && work.trim().length > 0
-			? `obra "${work}" de ${artist}`
-			: `obra de ${artist}`;
+const generateReference = (data) =>
+	data.work
+		? buildMessage("Referencia a", data)
+		: buildMessage("Referencia a la",data);
 
-	console.log("message", message);
-	return message;
-};
+const generateInspiration = (data) =>
+	data.work
+		? buildMessage("Inspirado en", data)
+		: data.ubication
+			? `Inspirado en ${data.artist}. ${data.ubication}`
+			: `Inspirado en ${data.artist}.`;
 
-const generateInspiration = ({ artist, work } = {}) => {
-	console.log("entro1", typeof artist);
-
-	if (typeof artist !== "string" || artist.trim().length === 0) return "";
-
-	console.log("entro2");
-	let message = `Inspirado en `;
-	message +=
-		typeof work === "string" && work.trim().length > 0
-			? `obra "${work}" de ${artist}`
-			: `${artist}`;
-
-	console.log("message", message);
-	return message;
-};
+/**
+ * Dispatcher de tipos
+ */
 const typeDispatcher = {
 	inspiration: generateInspiration,
 	reference: generateReference,
 	tribute: generateTribute,
 	reinterpretation: generateReinterpretation,
 };
-export const generateTemplate = (type, { artist, work } = {}) => {
-	if (!type || typeof artist !== "string" || artist.trim().length === 0)
-		return "";
+
+/**
+ * Normaliza los datos de entrada
+ */
+const dataParser = ({ artist, work, year, ubication } = {}) => {
 	const formatAuthor = formatArtist(artist);
+
+	const normalizedWork =
+		typeof work === "string" && work.trim().length > 0 ? work.trim() : "";
+
+	const normalizedUbication =
+		typeof ubication === "string" && ubication.trim().length > 0
+			? ubication.trim()
+			: "";
+
+	const parsedYear = Number(year);
+	const normalizedYear =
+		!Number.isNaN(parsedYear) && parsedYear > 0 ? ` (${parsedYear})` : "";
+
+	return {
+		artist: formatAuthor,
+		work: normalizedWork,
+		year: normalizedYear,
+		ubication: normalizedUbication,
+	};
+};
+
+/**
+ * API principal
+ */
+export const generateTemplate = (type, input) => {
+	if (
+		!type ||
+		typeof input !== "object" ||
+		input === null ||
+		Array.isArray(input)
+	) {
+		return "";
+	}
+
+	const { artist, work, year, ubication } = input;
+
+	if (typeof artist !== "string" || artist.trim().length === 0) {
+		return "";
+	}
+
+	const data = dataParser({ artist, work, year, ubication });
+
+	if (!data.artist) return "";
+
 	const normalizedType = type.toLowerCase();
 	const handler = typeDispatcher[normalizedType];
-	console.log("handler:::::", handler);
+
 	if (!handler) return "";
-	return handler({ artist: formatAuthor ,work});
+
+	return handler(data);
 };

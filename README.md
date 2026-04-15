@@ -76,14 +76,5 @@ Abrí `index.html` en tu navegador.
 
 Este proyecto nace de una necesidad real observada en comunidades de artistas, donde muchos usuarios no sabían cómo citar correctamente obras o referencias.
 
-## 🤝 Contribuciones
-
-Las contribuciones son bienvenidas.
-Podés abrir un issue o enviar un pull request.
-
-
-MIT
-
----
 
 Hecho con 💻 + 🎨
