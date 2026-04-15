@@ -2,6 +2,7 @@ import { describe, expect, test } from "vitest";
 import { generateTemplate } from "../js/template";
 
 describe("generateTemplate", () => {
+	
 	test("return inspiration template", () => {
 		expect(generateTemplate("inspiration", { artist: "Emilia Bertolé" })).toBe(
 			"Inspirado en Emilia Bertolé.",
