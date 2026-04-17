@@ -1,13 +1,82 @@
 <!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Art Attribute Tool</title>
-  </head>
-  <body>
-    <header><h1>Art Attribute Tool</h1></header>
-    <main>main</main>
-    <footer></footer>
-  </body>
+<html lang="es">
+	<head>
+		<meta charset="UTF-8" />
+    <link rel="shortcut icon" href="/assets/art_23859.ico" type="image/x-icon">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/css/styel.css">
+		<title>Art Attribute Tool</title>
+	</head>
+	<body>
+		<header>
+      <img src="/assets/art_23859.png" alt="paleta artistica">
+			<h1>Art Attribute Tool</h1>
+		</header>
+
+		<main id="container-main">
+	<!-- 		<div id="container-form"> -->
+				<form action="" id="form-template">
+					<div>
+						<label for="artist">Artista</label>
+						<input type="text" name="artist" id="artist" required />
+					</div>
+
+					<div>
+						<label for="work">Obra</label>
+						<input type="text" name="work" id="work" />
+					</div>
+
+					<div>
+						<label for="year">Año</label>
+						<input type="text" name="year" id="year" />
+					</div>
+
+					<div>
+						<label for="ubication">Ubicación</label>
+						<input type="text" name="ubication" id="ubication" />
+					</div>
+
+					<div class="buttons">
+						<button type="submit" data-type="inspiration">
+							Inspiración
+						</button>
+						<button type="submit" data-type="reference">
+							Referencia
+						</button>
+						<button type="submit" data-type="tribute">
+							Homenaje
+						</button>
+						<button type="submit" data-type="reinterpretation">
+							Reinterpretación
+						</button>
+					</div>
+				</form>
+			<!-- </div> -->
+
+			<dialog id="myModal">
+				<h2>Template </h2>
+        <p id="limits">
+          Esta herramienta solo genera textos de atribución y no determina derechos de autor ni uso legal.</p>
+				<div id="container-template">
+					<button type="button" id="template-button">copy</button>
+					<textarea id="template"></textarea>
+				</div>
+
+				<!-- A form with method="dialog" will close the modal without JS -->
+				<form method="dialog">
+					<button type="submit">Cerrar</button>
+				</form>
+			</dialog>
+		</main>
+
+		<footer>
+      <p>© 2026 GMM</p>
+    	<p>
+	    	<a href="https://github.com/tuusuario">GitHub</a> ·
+		    <a href="https://linkedin.com/in/tuusuario">LinkedIn</a>
+  	  </p>
+    </footer>
+
+		<script type="module" src="./js/main.js"></script>
+	</body>
 </html>

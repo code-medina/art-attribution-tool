@@ -8,8 +8,9 @@
 		"test": "vitest",
 		"test:v": "pnpm vitest --reporter verbose",
 		"lint": "biome check .",
-		"format": "biome format .",
-		"lint:fix": "biome check --write ."
+		"format": "biome format --write .",
+		"lint:fix": "biome check --write .",
+		"dev": "servor ."
 	},
 	"keywords": [],
 	"author": "",
@@ -17,6 +18,7 @@
 	"packageManager": "pnpm@10.33.0",
 	"devDependencies": {
 		"@biomejs/biome": "2.4.11",
+		"servor": "^4.0.2",
 		"vitest": "^4.1.4"
 	}
 }

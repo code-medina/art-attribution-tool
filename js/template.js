@@ -1,9 +1,9 @@
-import { formatArtist } from "./formatting";
+import { formatArtist } from "./formatting.js";
 
 /**
  * Construye el texto base de la obra
  */
-const buildWorkText = ({ artist, work, year }={}) => {
+const buildWorkText = ({ artist, work, year } = {}) => {
 	return work ? `la obra "${work}"${year}, de ${artist}` : `obra de ${artist}`;
 };
 
@@ -34,7 +34,7 @@ const generateTribute = (data) =>
 const generateReference = (data) =>
 	data.work
 		? buildMessage("Referencia a", data)
-		: buildMessage("Referencia a la",data);
+		: buildMessage("Referencia a la", data);
 
 const generateInspiration = (data) =>
 	data.work
