@@ -1,4 +1,8 @@
 :root {
+
+
+	color-scheme: light dark;
+
 	--verde-oscuro: #668d8b;
 	--verde-claro: #94b494;
 	--verde-agua: #e8f0e0;
@@ -8,34 +12,82 @@
 	--rojo: #c45e5b;
 	--naranja: #e09b5e;
 	--marron: #ac8a64;
+
+
 }
+
+/* system */
+@media (prefers-color-scheme: dark) {
+	:root {
+		--bg-color: var(--verde-oscuro);
+		--txt-color: var(--fondo-gris);
+	}
+
+}
+
+@media (prefers-color-scheme: light) {
+	:root {
+		--bg-color: var(--fondo-gris);
+		--txt-color: var(--verde-oscuro)
+	}
+}
+
+/* override */
+:root[data-theme="dark"] {
+	--bg-color: var(--verde-oscuro);
+	--txt-color: var(--fondo-gris);
+	color-scheme: dark;
+
+	img {
+		filter: drop-shadow(0 0 15px rgba(0, 0, 0, 0.8));
+	}
+}
+
+:root[data-theme="light"] {
+	--bg-color: var(--fondo-gris);
+	--txt-color: var(--verde-oscuro);
+	color-scheme: light;
+
+}
+
 body {
-	background-color: #e3e3d3;
+	/* background-color: #e3e3d3; */
+	background-color: var(--bg-color);
+	color: var(--txt-color);
+
 }
+
 header {
 	display: flex;
 	gap: 1rem;
 	margin-bottom: 1rem;
 	justify-content: center;
 }
+
 #container-main {
 	display: flex;
 	justify-content: center;
 	min-height: 60vh;
 }
+
 #form-template {
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	margin: 2rem;
 	gap: 1rem;
-	background: rgba(255, 255, 255, 0.1); /* Fondo blanco transparente */
-	backdrop-filter: blur(10px); /* Efecto desenfoque */
+	background: rgba(255, 255, 255, 0.1);
+	/* Fondo blanco transparente */
+	backdrop-filter: blur(10px);
+	/* Efecto desenfoque */
 	-webkit-backdrop-filter: blur(10px);
 	border-radius: 15px;
-	border: 1px solid rgba(255, 255, 255, 0.2); /* Borde sutil */
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	/* Borde sutil */
 	padding: 20px;
-	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Sombra */
+	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+
+	/* Sombra */
 	div {
 		display: grid;
 		grid-template-columns: 120px 1fr;
@@ -43,6 +95,7 @@ header {
 		align-items: center;
 	}
 }
+
 input[type="text"] {
 	padding: 10px;
 	border: 2px solid #668d8b;
@@ -51,17 +104,21 @@ input[type="text"] {
 
 	transition: border-color 0.3s;
 }
+
 input[type="text"]:focus {
 	border-color: #94b494;
 	outline: none;
 }
+
 .buttons {
 	margin: 1rem;
+
 	button {
 		border: none;
 		border-radius: 8px;
 	}
 }
+
 footer {
 	display: flex;
 	justify-content: center;
