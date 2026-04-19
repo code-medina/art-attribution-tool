@@ -1,11 +1,20 @@
 import { handleClickCopyTemplate } from "./dialog.js";
 import { handleSubmit } from "./form.js";
+import { handlerToggleTheme, initTheme } from "./theme.js";
 
 console.log(import.meta.url);
-
+//form
 const form = document.getElementById("form-template");
+form.addEventListener("submit", handleSubmit);
+
 // dialog copy clipboard
 const templateTextarea = document.getElementById("template-button");
-
-form.addEventListener("submit", handleSubmit);
 templateTextarea.addEventListener("click", handleClickCopyTemplate);
+
+
+//theme
+const buttonTheme = document.getElementById("toggle-theme");
+buttonTheme?.addEventListener("click", handlerToggleTheme)
+initTheme();
+
+
