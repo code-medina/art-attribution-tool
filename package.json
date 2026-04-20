@@ -10,7 +10,7 @@
 		"lint": "biome check .",
 		"format": "biome format --write .",
 		"lint:fix": "biome check --write .",
-		"dev": "servor ."
+		"dev": "servor --reload ."
 	},
 	"keywords": [],
 	"author": "",
