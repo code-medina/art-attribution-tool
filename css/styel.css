@@ -1,3 +1,7 @@
+html {
+	font-size: 16px;
+}
+
 :root {
 
 
@@ -57,17 +61,34 @@ body {
 }
 
 header {
-	display: flex;
+	display: grid;
+	grid-template-columns: 3fr 1fr;
+
+
+	/* 	display: flex;
 	gap: 1rem;
 	margin: 1rem 12rem;
 	justify-content: center;
 	align-items: center;
+	position: relative;
+ */
+	.center {
+		display: flex;
+		align-items: center;
+		width: 50vw;
+		justify-content: center;
+
+		gap: 10px;
+	}
 
 	#toggle-theme {
-		margin-left: auto;
+
+		/* 	position: absolute;
+		right: 20px; */
+		/* lo manda al extremo derecho */
 		border: none;
 		background-color: transparent;
-		font-size: large;
+		font-size: 2rem;
 	}
 
 	img {
@@ -103,8 +124,8 @@ header {
 	/* Borde sutil */
 	padding: 20px;
 	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-
 	/* Sombra */
+
 	div {
 		display: grid;
 		grid-template-columns: 120px 1fr;
@@ -150,4 +171,19 @@ input[type="text"]:focus {
 footer {
 	display: flex;
 	justify-content: center;
+}
+
+@media (max-width: 600px) {
+	html {
+		font-size: 12px;
+	}
+
+	#form-template div {
+
+		display: flex;
+		flex-direction: column;
+		gap: 10px;
+		align-items: center;
+	}
+
 }
