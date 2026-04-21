@@ -1,4 +1,4 @@
-import { formatArtist } from "./formatting.js";
+import { formatArtist, formatWork } from "./formatting.js";
 
 /**
  * Construye el texto base de la obra
@@ -59,8 +59,7 @@ const typeDispatcher = {
 const dataParser = ({ artist, work, year, ubication } = {}) => {
 	const formatAuthor = formatArtist(artist);
 
-	const normalizedWork =
-		typeof work === "string" && work.trim().length > 0 ? work.trim() : "";
+	const normalizedWork = formatWork(work);
 
 	const normalizedUbication =
 		typeof ubication === "string" && ubication.trim().length > 0
