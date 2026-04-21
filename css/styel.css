@@ -175,8 +175,55 @@ input[type="text"]:focus {
 		font-style: italic;
 	}
 
-	bottom:hover {
-		scale: 1.1;
+	button:hover {
+		filter: invert(100);
+	}
+}
+
+dialog {
+	background: rgba(255, 255, 255, 0.1);
+	/* Fondo blanco transparente */
+	backdrop-filter: blur(10px);
+	/* Efecto desenfoque */
+	-webkit-backdrop-filter: blur(10px);
+	border-radius: 15px;
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	/* Borde sutil */
+	padding: 20px;
+	box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+
+	textarea {
+		width: 100%;
+		/* Full width of container */
+		height: auto;
+		/* Fixed initial height */
+		padding: 12px;
+		/* Space inside the box */
+		border: 2px solid #ccc;
+		/* Border color and thickness */
+		border-radius: 4px;
+		/* Rounded corners */
+		font-family: inherit;
+		/* Match site-wide font */
+		box-sizing: border-box;
+	}
+
+	button {
+		padding: 1rem;
+		border: none;
+		border-radius: 8px;
+		font-style: italic;
+
+	}
+
+	button:hover {
+		filter: invert(100);
+	}
+
+	form {
+		display: flex;
+		justify-content: center;
+		margin: 1rem;
 	}
 }
 
