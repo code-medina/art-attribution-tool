@@ -27,6 +27,7 @@ html {
 	:root {
 		--bg-color: var(--verde-oscuro);
 		--txt-color: var(--fondo-gris);
+		--enlace: var(--verde-agua);
 	}
 
 }
@@ -34,7 +35,7 @@ html {
 @media (prefers-color-scheme: light) {
 	:root {
 		--bg-color: var(--fondo-gris);
-		--txt-color: var(--verde-oscuro)
+		--txt-color: var(--verde-oscuro) --encale:var(--verde-oscuro);
 	}
 }
 
@@ -42,6 +43,7 @@ html {
 :root[data-theme="dark"] {
 	--bg-color: var(--verde-oscuro);
 	--txt-color: var(--fondo-gris);
+	--enlace: var(--verde-agua);
 	color-scheme: dark;
 
 
@@ -50,6 +52,8 @@ html {
 :root[data-theme="light"] {
 	--bg-color: var(--fondo-gris);
 	--txt-color: var(--verde-oscuro);
+	--encale: var(--verde-oscuro);
+
 	color-scheme: light;
 
 }
@@ -228,8 +232,23 @@ dialog {
 }
 
 footer {
+	color: var(--encale);
+
 	display: flex;
 	justify-content: center;
+	gap: 1rem;
+
+	a {
+		color: var(--encale);
+
+		text-decoration: none;
+		transition: scale 0.3s ease;
+
+	}
+
+	a:hover {
+		filter: contrast(300%);
+	}
 }
 
 @media (max-width: 600px) {
