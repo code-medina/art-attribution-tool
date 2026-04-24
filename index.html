@@ -24,35 +24,39 @@
 		<form action="" id="form-template">
 			<div>
 				<label for="artist">Artista</label>
-				<input type="text" name="artist" id="artist" required />
+				<input type="text" name="artist" id="artist" required maxlength="40" autofocus minlength="2" />
+				<span></span> <span id="error-artist" aria-live="polite"></span>
 			</div>
 
 			<div>
 				<label for="work">Obra</label>
-				<input type="text" name="work" id="work" />
+				<input type="text" name="work" id="work" maxlength="40" minlength="2" />
+				<span></span><span id="error-work" aria-live="polite"></span>
 			</div>
 
 			<div>
 				<label for="year" hidden>Año (YYYY):</label>
 				<input type="text" name="year" id="year" pattern="[0-9]{4}" maxlength="4" hidden />
+				<span></span><span id="error-year" aria-live="polite"></span>
 			</div>
 
 			<div>
 				<label for="ubication" hidden>Ubicación</label>
-				<input type="text" name="ubication" id="ubication" hidden />
+				<input type="text" name="ubication" id="ubication" hidden maxlength="40" minlength="2" />
+				<span></span> <span id="error-ubication" aria-live="polite"></span>
 			</div>
 
 			<section class="buttons">
-				<button type="submit" data-type="inspiration">
+				<button type="submit" data-type="inspiration" disabled>
 					Inspiración
 				</button>
-				<button type="submit" data-type="reference">
+				<button type="submit" data-type="reference" disabled>
 					Referencia
 				</button>
-				<button type="submit" data-type="tribute">
+				<button type="submit" data-type="tribute" disabled>
 					Homenaje
 				</button>
-				<button type="submit" data-type="reinterpretation">
+				<button type="submit" data-type="reinterpretation" disabled>
 					Reinterpretación
 				</button>
 			</section>
