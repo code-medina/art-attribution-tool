@@ -7,11 +7,11 @@ export const formatArtist = (artist) => {
 		.toLowerCase()
 		.replace(/\b\w/g, (c) => c.toUpperCase());
 };
-export const formatWork = (work) => {
+export const formatSpacing = (words) => {
 
-	if (!work) return "";
-	if (typeof work !== "string") return "";
-	return work
+	if (!words) return "";
+	if (typeof words !== "string") return "";
+	return words
 		.trim()
 		.replace(/\s+/g, " ");
 }

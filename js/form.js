@@ -4,14 +4,14 @@ import { validationMaxLength, validationMinLength } from "./validation.js";
 
 
 
-// work input event
-
+// conditional field
 const yearHtml = document.getElementById("year");
 const yearLabel = yearHtml.previousElementSibling;
 const ubicationHtml = document.getElementById("ubication");
 const ubicationLabel = ubicationHtml.previousElementSibling;
-const buttonsSubmit = document.querySelectorAll('.buttons [type="submit"]');
 
+//submits button
+const buttonsSubmit = document.querySelectorAll('.buttons [type="submit"]');
 
 const setDisabledSubmits = (button, disabled = true) => {
 	if (button) {
@@ -24,9 +24,11 @@ const setDisabledSubmits = (button, disabled = true) => {
 	}
 
 }
+//event input artist allow submit
 export const handlerInputArtist = (e) => {
 	const value = e.target.value;
 	if (value.trim() === "") {
+
 		buttonsSubmit.forEach(b => setDisabledSubmits(b, true));
 		return;
 
@@ -34,6 +36,8 @@ export const handlerInputArtist = (e) => {
 	buttonsSubmit.forEach(b => setDisabledSubmits(b, false));
 
 }
+
+
 
 const setHiddenInputAndLabel = (input, label, hidden = true) => {
 
@@ -48,14 +52,12 @@ const setHiddenInputAndLabel = (input, label, hidden = true) => {
 
 }
 
+// event input work  allow conditional field and your labels
 export const handleInputWork = (e) => {
 
 	const value = e.target.value;
-	const isYearHidden = yearHtml.hidden;
-	const isUbicationHidden = ubicationHtml.hidden;
 
 	if (value.trim() === "") {
-		console.log("entro a value nada")
 		setHiddenInputAndLabel(yearHtml, yearLabel, true);
 		setHiddenInputAndLabel(ubicationHtml, ubicationLabel, true);
 
@@ -75,16 +77,30 @@ const templateDispatcher = {
 	reinterpretation: (input) => generateTemplate("reinterpretation", input),
 };
 
-const validationLegth = (value) => {
-	console.log("validation length");
 
-	if (validationMinLength(value) && validationMaxLength(value)) {
-		console.log("es true");
-		return true;
+const setErrorMessage = (mapErrors) => {
+	for (let [clave, valor] of mapErrors) {
+		console.log(`${clave} = ${valor}`);
+		const spanError = document.getElementById(`error-${clave}`);
+		const input = document.getElementById(clave);
+		spanError.textContent = valor;
+		setTimeout(() => spanError.textContent = "", 3000);
+
 	}
-
-	return false;
+	document.getElementById("artist").focus();
 }
+const validateDataForm = ({ artist, work, year, ubication }) => {
+	const errors = new Map();
+	if (artist.trim() !== "" && (!validationMinLength(artist) || !validationMaxLength(artist))) errors.set("artist", "Usá entre 2 y 40 caracteres 😊");
+	if (work.trim() !== "" && (!validationMinLength(work) || !validationMaxLength(work))) errors.set("work", "Usá entre 2 y 40 caracteres 😊");
+	if (ubication.trim() !== "" && (!validationMinLength(ubication) || !validationMaxLength(ubication))) errors.set("ubication", "Usá entre 2 y 40 caracteres 😊");
+
+	if (year.trim() !== "" && (!validationMinLength(year, 4) || !validationMaxLength(year, 4))) errors.set("year", "Usá año valido 😊");
+
+	console.log("errors", errors);
+	return errors;
+}
+
 const dataForm = (formTarget) => {
 	const formData = new FormData(formTarget);
 	console.log("formData", formData);
@@ -93,23 +109,6 @@ const dataForm = (formTarget) => {
 	const data = {};
 	for (const pair of formData.entries()) {
 		data[pair[0]] = pair[1];
-		//only if not empty
-		if (pair[1] !== "") {
-			console.log("validando", pair[0], pair[1])
-
-			console.log(validationLegth([pair[1]]));
-			if (!validationLegth(pair[1])) {
-				console.log("no valido", pair[1]);
-				const spanError = document.getElementById(`error-${pair[0]}`);
-				spanError.textContent = "Error maximo 40 characters,minimo 2";
-
-				setTimeout(() => spanError.textContent = "", 3000);
-				return null;
-
-
-			}
-		}
-
 	}
 	console.log(data);
 	return data;
@@ -120,8 +119,12 @@ export const handleSubmit = (submitEvent) => {
 	const button = submitEvent.submitter;
 
 	const data = dataForm(submitEvent.target);
-	if (!data) return;
+	const errors = validateDataForm(data);
+	if (errors.size > 0) {
 
+		setErrorMessage(errors);
+		return;
+	}
 
 	const handler = templateDispatcher[button.dataset.type];
 	if (!handler) return;
