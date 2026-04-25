@@ -24,35 +24,39 @@
 		<form action="" id="form-template">
 			<div>
 				<label for="artist">Artista</label>
-				<input type="text" name="artist" id="artist" required />
+				<input type="text" name="artist" id="artist" required maxlength="40" autofocus minlength="2" />
+				<span></span> <span id="error-artist" aria-live="polite"></span>
 			</div>
 
 			<div>
 				<label for="work">Obra</label>
-				<input type="text" name="work" id="work" />
+				<input type="text" name="work" id="work" maxlength="40" minlength="2" />
+				<span></span><span id="error-work" aria-live="polite"></span>
 			</div>
 
 			<div>
 				<label for="year" hidden>Año (YYYY):</label>
 				<input type="text" name="year" id="year" pattern="[0-9]{4}" maxlength="4" hidden />
+				<span></span><span id="error-year" aria-live="polite"></span>
 			</div>
 
 			<div>
 				<label for="ubication" hidden>Ubicación</label>
-				<input type="text" name="ubication" id="ubication" hidden />
+				<input type="text" name="ubication" id="ubication" hidden maxlength="40" minlength="2" />
+				<span></span> <span id="error-ubication" aria-live="polite"></span>
 			</div>
 
 			<section class="buttons">
-				<button type="submit" data-type="inspiration">
+				<button type="submit" data-type="inspiration" disabled>
 					Inspiración
 				</button>
-				<button type="submit" data-type="reference">
+				<button type="submit" data-type="reference" disabled>
 					Referencia
 				</button>
-				<button type="submit" data-type="tribute">
+				<button type="submit" data-type="tribute" disabled>
 					Homenaje
 				</button>
-				<button type="submit" data-type="reinterpretation">
+				<button type="submit" data-type="reinterpretation" disabled>
 					Reinterpretación
 				</button>
 			</section>
@@ -63,9 +67,10 @@
 		<dialog id="myModal">
 			<h2>Template </h2>
 			<p id="limits">
-				Esta herramienta solo genera textos de atribución y no determina derechos de autor ni uso legal.</p>
+				Generamos textos de atribución de forma automática. No usamos obras originales ni validamos derechos de
+				autor. Asegurate de contar con los permisos necesarios para el uso que le des.</p>
 			<div id="container-template">
-				<button type="button" id="template-button">copy</button>
+				<button type="button" id="template-button">Copy</button>
 				<textarea id="template" style="resize: none;"></textarea>
 			</div>
 
@@ -77,11 +82,16 @@
 	</main>
 
 	<footer>
+
 		<p> © 2026 GMM </p>
 		<p>
-			<a href="https://github.com/code-medina/art-attribution-tool" target="_blank"> Repositorio </a> ·
-			<a href="https://linkedin.com/in/gisele-medina-89918a2a5" target="_blank"> LinkedIn</a>
+			Herramienta de plantillas de referencia. Uso informativo.
 		</p>
+		<a href="https://github.com/code-medina/art-attribution-tool" target="_blank"> Repositorio </a>
+		<a href="https://linkedin.com/in/gisele-medina-89918a2a5" target="_blank"> LinkedIn</a>
+
+
+
 	</footer>
 
 	<script type="module" src="./js/main.js"></script>

@@ -1,4 +1,4 @@
-import { formatArtist, formatWork } from "./formatting.js";
+import { formatArtist, formatSpacing } from "./formatting.js";
 
 /**
  * Construye el texto base de la obra
@@ -59,12 +59,9 @@ const typeDispatcher = {
 const dataParser = ({ artist, work, year, ubication } = {}) => {
 	const formatAuthor = formatArtist(artist);
 
-	const normalizedWork = formatWork(work);
+	const normalizedWork = formatSpacing(work);
 
-	const normalizedUbication =
-		typeof ubication === "string" && ubication.trim().length > 0
-			? ubication.trim()
-			: "";
+	const normalizedUbication =formatSpacing(ubication);
 
 	const parsedYear = Number(year);
 	const normalizedYear =

@@ -14,7 +14,7 @@ export const handleClickCopyTemplate = (event) => {
 	event.preventDefault();
 
 	const button = document.getElementById("template-button");
-	clipboard()
+	clipboard("template")
 		.then(() => {
 			button.textContent = "copied";
 			setTimeout(() => (button.textContent = "copy"), 2000);

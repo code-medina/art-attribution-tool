@@ -147,6 +147,12 @@ header {
 		gap: 10px;
 		align-items: center;
 	}
+
+	span {
+		font-size: 12px;
+		font-style: italic;
+
+	}
 }
 
 input[type="text"] {
@@ -213,6 +219,7 @@ dialog {
 	}
 
 	button {
+		margin: cal(1rem/2);
 		padding: 1rem;
 		border: none;
 		border-radius: 8px;
@@ -236,11 +243,12 @@ footer {
 
 	display: flex;
 	justify-content: center;
+	align-items: center;
 	gap: 1rem;
 
 	a {
 		color: var(--encale);
-
+		font-weight: bold;
 		text-decoration: none;
 		transition: scale 0.3s ease;
 
@@ -267,6 +275,11 @@ footer {
 		flex-direction: column;
 		gap: 10px;
 		align-items: center;
+	}
+
+	footer {
+		display: flex;
+		flex-direction: column;
 	}
 
 }
